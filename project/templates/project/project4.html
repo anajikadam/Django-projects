@@ -1,0 +1,27 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <h1>Projects 4</h1>
+    <div class="row">
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          {% load static %}
+          <img src="{% static 'Image/ai3.jpg'%}" class="card-img-top" alt="Imag1">
+          <div class="card-body">
+            <h5 class="card-title">Task 1</h5>
+            <p class="card-text"> Covid Web API using Flask and deployed on Heroku</p>
+            <a href="https://covid-webapi.herokuapp.com/" target="_blank" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          <img src="{% static 'Image/ai4.JPG'%}" class="card-img-top" alt="Image2">
+          <div class="card-body">
+            <h5 class="card-title">Task 2</h5>
+            <p class="card-text">Multiple ML projects with Flask and deployed on Heroku</p>
+            <a href="https://anaji-projects.herokuapp.com/" target="_blank" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,87 @@
+{% extends "project/base.html" %}
+{% block content %}
+<!--    <h1> </h1>-->
+    <div class="card">
+<!--      <img class="card-img-top" src="..." alt="Card image cap">-->
+      <div class="card-body">
+        <h5 class="card-title">Famous Peoples from Country</h5>
+        <form method="post" id="country-form">
+            {% csrf_token %}
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Country</label>
+            <select class="form-control" name = "Country" id="Country">
+                {%for ver in Data%}
+                    <option value={{ver}}>{{ver}}</option>
+                {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Select Peoples Counts</label>
+            <select class="form-control" name = "Counts" id="Counts">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        <script type="text/javascript">
+        $(document).on('submit','#country-form',function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'{% url 'project-peoples' %}',
+                data:
+                {
+                    Country:$("#Country").val(),
+                    Counts:$("#Counts").val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(){
+                      //alert('Saved');
+                        }
+                })
+            });
+        </script>
+      </div>
+    </div>
+    {% if Data1 %}
+    <h1>{{Counts}} Famous Peoples in {{Country}} </h1>
+    <div class="row">
+    {% for d in Data1 %}
+        {% if  not forloop.counter|divisibleby:2%}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                    {% for key,value in d.items %}
+                    {% if key == 'img_link' %}<img src="{{value}}" class="card-img-top" alt="{{value}}">{% endif %}
+                    <h5 class="card-title">{% if key == 'Name' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'info' %}<p class="card-text">{{value|safe}}</p>{% endif %}
+                        {% if key == 'link' %}<a href="{{value}}" class="card-link">More Info</a>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                    {% for key,value in d.items %}
+                    {% if key == 'img_link' %}<img src="{{value}}" class="card-img-top" alt="{{value}}">{% endif %}
+                    <h5 class="card-title">{% if key == 'Name' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'info' %}<p class="card-text">{{value|safe}}</p>{% endif %}
+                        {% if key == 'link' %}<a href="{{value}}" class="card-link">More Info</a>{% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+        {%  endif %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+{% endblock content %}

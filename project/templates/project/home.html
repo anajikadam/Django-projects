@@ -1,0 +1,50 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <h1>Projects Home</h1>
+    <div class="row">
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          {% load static %}
+          <img src="{% static 'Image/b1.jpg'%}" class="card-img-top" alt="Imag1">
+          <div class="card-body">
+            <h5 class="card-title">Project 1</h5>
+            <p class="card-text"> The Famous Peoples project</p>
+            <a href="{% url 'project-project1' %}" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          <img src="{% static 'Image/dict.jpg'%}" class="card-img-top" alt="Image2">
+          <div class="card-body">
+            <h5 class="card-title">Project 2</h5>
+            <p class="card-text">The Dictionary</p>
+            <a href="{% url 'project-project2' %}" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          {% load static %}
+          <img src="{% static 'Image/fastapi.png'%}" class="card-img-top" alt="Image3">
+          <div class="card-body">
+            <h5 class="card-title">Project 3</h5>
+            <p class="card-text"> The Fast API app</p>
+            <a href="{% url 'project-project3' %}" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="card" style="margin-bottom: 10px;">
+          <img src="{% static 'Image/flask1.png'%}" class="card-img-top" alt="Image4">
+          <div class="card-body">
+            <h5 class="card-title">Project 4</h5>
+            <p class="card-text">The Flask Application</p>
+            <a href="{% url 'project-project4' %}" class="btn btn-primary">Go=></a>
+          </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}

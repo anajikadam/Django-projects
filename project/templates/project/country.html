@@ -1,0 +1,33 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <h1>Country and People count</h1>
+    <div class="row">
+    {% for d in Data %}
+        {% if  not forloop.counter|divisibleby:2%}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                  {% for key,value in d.items %}
+                    <h5 class="card-title">{% if key == 'Country' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'people_Count' %}<p class="card-text">People Count : {{value}}</p>{% endif %}
+                        {% if key == 'Link' %}<a href="{{value}}" class="card-link">Country link</a>{% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                  {% for key,value in d.items %}
+                    <h5 class="card-title">{% if key == 'Country' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'people_Count' %}<p class="card-text">People Count : {{value}}</p>{% endif %}
+                        {% if key == 'Link' %}<a href="{{value}}" class="card-link">Country link</a>{% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+        {%  endif %}
+    {% endfor %}
+    </div>
+{% endblock content %}

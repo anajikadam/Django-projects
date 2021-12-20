@@ -1,0 +1,52 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <h1>Famous Peoples in India only </h1>
+    <div class="row">
+    {% for d in Data %}
+        {% if  not forloop.counter|divisibleby:2%}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                    {% for key,value in d.items %}
+                    {% if key == 'img_link' %}<img src="{{value}}" class="card-img-top" alt="{{value}}">{% endif %}
+                    <h5 class="card-title">{% if key == 'Name' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'info' %}<p class="card-text">{{value|safe}}</p>{% endif %}
+                        {% if key == 'link' %}<a href="{{value}}" class="card-link">More Info</a>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-md-6">
+            <div class="card" style="margin-bottom: 10px;">
+                <div class="card-body">
+                    {% for key,value in d.items %}
+                    {% if key == 'img_link' %}<img src="{{value}}" class="card-img-top" alt="{{value}}">{% endif %}
+                    <h5 class="card-title">{% if key == 'Name' %}{{forloop.parentloop.counter}} {{value}}{% endif %}</h5>
+                        {% if key == 'info' %}<p class="card-text">{{value|safe}}</p>{% endif %}
+                        {% if key == 'link' %}<a href="{{value}}" class="card-link">More Info</a>{% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+        {%  endif %}
+    {% endfor %}
+    </div>
+
+
+<!--        <div class="card" style="width: 18rem;">-->
+<!--          <img src="//www.thefamouspeople.com/profiles/thumbs/mahatma-gandhi-36.jpg" class="card-img-top" alt="...">-->
+<!--          <div class="card-body">-->
+<!--            <h5 class="card-title">1. Mahatma Gandhi</h5>-->
+<!--            <p class="card-text">Listed In: Historical Personalities<br>-->
+<!--Famous As: Leader of Indian Independence Movement<br>-->
+<!--Birthdate: October 2, 1869<br>-->
+<!--Sun Sign: Libra<br>-->
+<!--Birthplace: Porbandar, Kathiawar Agency, British Indian Empire<br>-->
+<!--Died: January 30, 1948<br>-->
+<!--An Indian lawyer and anti-colonial nationalist<br></p>-->
+<!--            <a href="http://www.thefamouspeople.com/profiles/mahatma-gandhi-55.php" class="btn btn-primary">Go somewhere</a>-->
+<!--          </div>-->
+<!--        </div>-->
+
+{% endblock content %}
