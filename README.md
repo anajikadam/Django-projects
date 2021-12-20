@@ -3,3 +3,7 @@ Create Django application and deployed it on Heroku. Application contains Blogs 
 
 ### Heroku Link
 [http://anadjangoapp.herokuapp.com/](http://anadjangoapp.herokuapp.com/)
+
+## Django Web App Images:
+![](Images/a11.PNG)
+![](Images/a12.PNG)
